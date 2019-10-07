@@ -17,6 +17,15 @@ public class BallControl : MonoBehaviour
         rb.AddRelativeTorque(Vector3.back * rotation);
 
         //
+        if (Input.GetKeyDown(KeyCode.W) && isFalling == false)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, jumpHeight, rb.velocity.z);
+        }
+        isFalling = true;
+    }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        isFalling = false;
     }
 }   
