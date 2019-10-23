@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BallControl : MonoBehaviour
 {
-    public int rotationSpeed = 200;
+    public int rotationSpeed = 2000;
     public int jumpHeight = 8;
     public float distToGround;
     public Rigidbody rb;
@@ -19,10 +19,9 @@ public class BallControl : MonoBehaviour
         distToGround = ball.bounds.extents.y;
     }
 
-    // Update is called once per frame
     private void Update()
     {
-        //Добавляет крутящий момент при нажатии "a"/"d" - Handle ball roration
+        //Add the rotation moment when press "a"/"d" buttons
         float rotation = Input.GetAxis("Horizontal") * rotationSpeed;
         rotation *= Time.deltaTime;
         rb.AddRelativeTorque(Vector3.back * rotation);
@@ -40,7 +39,10 @@ public class BallControl : MonoBehaviour
         return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    /*
+     * Set the sound when ball colission with platform
+     */
+    private void OnCollisionEnter()
     {
         int theHit = Random.Range(0, 4);
         switch (theHit)

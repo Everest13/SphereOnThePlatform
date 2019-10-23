@@ -1,34 +1,16 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
-using System.Collections;
 
 public class BallHealth : MonoBehaviour
 {
-    public int maxFallDistance = -1;
-    public AudioClip gameOver;
-    public AudioSource audioData;
-    private bool isRestarting = false;
+    private float maxFallDistance = -15f;
+    public GameManager gameManager;
 
-    // Update is called once per frame
     void Update()
     {
-        if (transform.position.y <= maxFallDistance && isRestarting == false)
+        //Restart game, if ball is fallinf from the platform
+        if (transform.position.y <= maxFallDistance && gameManager.isRestarting == false)
         {
-            StartCoroutine(Restart());
+            StartCoroutine(gameManager.Restart());
         }
-    }
-
-    //Load active scene
-    //And play Game Over sound
-    IEnumerator Restart()
-    {
-        isRestarting = true;
-        //set clip in gameObject audioSource
-        audioData.clip = gameOver;
-        audioData.pitch = 1;
-        audioData.Play();
-        yield return new WaitForSeconds(audioData.clip.length);
-        //reload active scene level
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
