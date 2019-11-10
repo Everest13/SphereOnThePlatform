@@ -10,6 +10,7 @@ public class EndPoint : MonoBehaviour
      */
     private void OnTriggerEnter(Collider collInfo)
     {
+        Debug.Log("trigger");
         if (collInfo.tag == player.tag)
         {
             gameManager.LoadNexLevel();

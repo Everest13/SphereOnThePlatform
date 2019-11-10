@@ -22,9 +22,9 @@ public class GameManager : MonoBehaviour
         //Create music fon
         if (GameObject.FindGameObjectsWithTag("MusicManager").Length == 0)
         {
-             var musicManager = Instantiate(musicPrefab, transform.position, Quaternion.identity);
+             /*var musicManager = Instantiate(musicPrefab, transform.position, Quaternion.identity);
              musicManager.name = musicPrefab.name;
-             DontDestroyOnLoad(musicManager); //не отключать при перезагрузке
+             DontDestroyOnLoad(musicManager); //не отключать при перезагрузке*/
         }
     }
 
@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
         //set clip in gameObject audioSource
         audioData.clip = gameOver;
         audioData.pitch = 1;
-        audioData.Play();
+        //audioData.Play();
         yield return new WaitForSeconds(audioData.clip.length);
 
         SelfDestruct selfDestruct = player.GetComponent<SelfDestruct>();
