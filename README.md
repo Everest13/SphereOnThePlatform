@@ -1,6 +1,6 @@
 # SphereOnThePlatform
 
-Unity3D game, based on Brackeys tutorial [https://www.youtube.com/channel/UCYbK_tjZ2OrIZFBvU6CCMiA].
+Unity3D game.
 
 Игра имеет три уровня, где вы управляете объектом в виде шара, для преодоления разного рода препятствий.
 
